@@ -1,0 +1,102 @@
+[
+  {
+    "question": "कंप्यूटर का मस्तिष्क किसे कहा जाता है?",
+    "options": ["माउस", "कीबोर्ड", "सीपीयू", "मॉनिटर"],
+    "answer": "सीपीयू"
+  },
+  {
+    "question": "कंप्यूटर की फुल फॉर्म क्या है?",
+    "options": ["Commonly Operated Machine Particularly Used for Technical Education and Research", "Central Operating Machine", "Control Unit", "None"],
+    "answer": "Commonly Operated Machine Particularly Used for Technical Education and Research"
+  },
+  {
+    "question": "RAM का पूरा नाम क्या है?",
+    "options": ["Random Access Memory", "Read Access Memory", "Run Access Memory", "None"],
+    "answer": "Random Access Memory"
+  },
+  {
+    "question": "हार्ड डिस्क क्या है?",
+    "options": ["इनपुट डिवाइस", "आउटपुट डिवाइस", "स्टोरेज डिवाइस", "प्रोसेसर"],
+    "answer": "स्टोरेज डिवाइस"
+  },
+  {
+    "question": "माउस किस प्रकार की डिवाइस है?",
+    "options": ["आउटपुट", "इनपुट", "स्टोरेज", "प्रोसेसिंग"],
+    "answer": "इनपुट"
+  },
+  {
+    "question": "MS Word किस प्रकार का सॉफ्टवेयर है?",
+    "options": ["ऑपरेटिंग सिस्टम", "प्रोसेसिंग सॉफ्टवेयर", "एप्लिकेशन सॉफ्टवेयर", "नेटवर्क सॉफ्टवेयर"],
+    "answer": "एप्लिकेशन सॉफ्टवेयर"
+  },
+  {
+    "question": "Ctrl + C किसके लिए प्रयोग होता है?",
+    "options": ["कॉपी करने के लिए", "पेस्ट करने के लिए", "कट करने के लिए", "सेव करने के लिए"],
+    "answer": "कॉपी करने के लिए"
+  },
+  {
+    "question": "इंटरनेट क्या है?",
+    "options": ["स्टोरेज डिवाइस", "नेटवर्क", "ऑपरेटिंग सिस्टम", "प्रिंटर"],
+    "answer": "नेटवर्क"
+  },
+  {
+    "question": "WWW का फुल फॉर्म क्या है?",
+    "options": ["World Whole Web", "Wide World Web", "World Wide Web", "Web Wide World"],
+    "answer": "World Wide Web"
+  },
+  {
+    "question": "CPU के कितने मुख्य भाग होते हैं?",
+    "options": ["1", "2", "3", "4"],
+    "answer": "3"
+  },
+  {
+    "question": "कंप्यूटर में डेटा को स्थायी रूप से कहां संग्रहित किया जाता है?",
+    "options": ["RAM", "Cache", "Hard Disk", "Register"],
+    "answer": "Hard Disk"
+  },
+  {
+    "question": "कंप्यूटर में सबसे तेज मेमोरी कौन सी होती है?",
+    "options": ["RAM", "ROM", "Cache", "Hard Disk"],
+    "answer": "Cache"
+  },
+  {
+    "question": "कंप्यूटर वायरस क्या है?",
+    "options": ["हार्डवेयर", "सॉफ्टवेयर", "मालवेयर", "नेटवर्क"],
+    "answer": "मालवेयर"
+  },
+  {
+    "question": "मॉनिटर किस प्रकार की डिवाइस है?",
+    "options": ["इनपुट डिवाइस", "आउटपुट डिवाइस", "स्टोरेज डिवाइस", "प्रोसेसिंग डिवाइस"],
+    "answer": "आउटपुट डिवाइस"
+  },
+  {
+    "question": "कीबोर्ड किस प्रकार की डिवाइस है?",
+    "options": ["इनपुट", "आउटपुट", "स्टोरेज", "सॉफ्टवेयर"],
+    "answer": "इनपुट"
+  },
+  {
+    "question": "Windows क्या है?",
+    "options": ["ब्राउज़र", "ऑपरेटिंग सिस्टम", "एप्लिकेशन", "नेटवर्क"],
+    "answer": "ऑपरेटिंग सिस्टम"
+  },
+  {
+    "question": "Bit और Byte में कितना अंतर होता है?",
+    "options": ["1 Byte = 4 Bits", "1 Byte = 8 Bits", "1 Byte = 16 Bits", "1 Byte = 2 Bits"],
+    "answer": "1 Byte = 8 Bits"
+  },
+  {
+    "question": "कंप्यूटर में सॉफ्टवेयर का काम क्या होता है?",
+    "options": ["इनपुट देना", "प्रोसेस करना", "हार्डवेयर को चलाना", "डाटा सेव करना"],
+    "answer": "हार्डवेयर को चलाना"
+  },
+  {
+    "question": "CD का उपयोग क्या है?",
+    "options": ["इनपुट के लिए", "प्रोसेसिंग के लिए", "स्टोरेज के लिए", "डाटा हटाने के लिए"],
+    "answer": "स्टोरेज के लिए"
+  },
+  {
+    "question": "ऑनलाइन वीडियो कॉलिंग के लिए किस ऐप का उपयोग होता है?",
+    "options": ["MS Word", "Zoom", "Excel", "Photoshop"],
+    "answer": "Zoom"
+  }
+]
