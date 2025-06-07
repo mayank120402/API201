@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>📘 छात्र क्विज़ पैनल</title>
+  <style>
+    /* आपकी CSS स्टाइलिंग यहाँ होगी */
+    body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #e0f7fa, #fff);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #00796b;
+  margin-bottom: 20px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 16px 0;
+  border: 1px solid #b0bec5;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+button {
+  background-color: #00796b;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #004d40;
+}
+
+.question-block {
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: #f1f8e9;
+  border-left: 5px solid #c5e1a5;
+  border-radius: 6px;
+}
+
+.question-block p {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+#scoreDisplay p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+#messagesBox {
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #e0f2f1;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+#messagesBox p {
+  margin: 8px 0;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📘 छात्र क्विज़ पैनल</h1>
+
+    <!-- पंजीकरण अनुभाग -->
+    <div class="section" id="registerSection">
+      <h2>खाता बनाएं</h2>
+      <input type="text" id="regName" placeholder="अपना नाम दर्ज करें" />
+      <input type="password" id="regPassword" placeholder="पासवर्ड बनाएं" />
+      <button onclick="register()">पंजीकरण करें</button>
+    </div>
+
+    <!-- लॉगिन अनुभाग -->
+    <div class="section" id="loginSection">
+      <h2>लॉगिन</h2>
+      <input type="text" id="studentNameInput" placeholder="अपना नाम दर्ज करें" />
+      <input type="password" id="studentPasswordInput" placeholder="अपना पासवर्ड दर्ज करें" />
+      <button onclick="login()">लॉगिन करें</button>
+    </div>
+
+    <!-- क्विज़ अनुभाग -->
+    <div class="section" id="quizSection" style="display:none;">
+      <h2>क्विज़ प्रयास करें</h2>
+      <form id="quizForm"></form>
+      <button onclick="submitQuiz()">क्विज़ सबमिट करें</button>
+    </div>
+
+    <!-- स्कोर अनुभाग -->
+    <div class="section" id="scoreSection" style="display:none;">
+      <h2>आपका स्कोरकार्ड</h2>
+      <div id="scoreDisplay"></div>
+    </div>
+
+    <!-- संदेश अनुभाग -->
+    <div class="section" id="messageSection" style="display:none;">
+      <h2>संदेश</h2>
+      <div id="messagesBox"></div>
+      <textarea id="studentMessage" placeholder="अपना संदेश लिखें..."></textarea>
+      <button onclick="sendMessage()">भेजें</button>
+    </div>
+  </div>
+
+<script>
+let currentStudent = null;
+
+const loadData = (key, def) => JSON.parse(localStorage.getItem(key)) || def;
+const saveData = (key, val) => localStorage.setItem(key, JSON.stringify(val));
+
+let registeredStudents = loadData('registeredStudents', []);
+
+function register() {
+  const name = document.getElementById("regName").value.trim();
+  const password = document.getElementById("regPassword").value.trim();
+  if (!name || !password) return alert("कृपया नाम और पासवर्ड दर्ज करें");
+
+  const exists = registeredStudents.find(s => s.name === name);
+  if (exists) return alert("यह नाम पहले से मौजूद है। कृपया एक अलग नाम आज़माएं।");
+
+  registeredStudents.push({ name, password });
+  saveData('registeredStudents', registeredStudents);
+  alert("पंजीकरण सफल! अब आप लॉगिन कर सकते हैं।");
+  document.getElementById("regName").value = "";
+  document.getElementById("regPassword").value = "";
+}
+
+function login() {
+  const name = document.getElementById('studentNameInput').value.trim();
+  const password = document.getElementById('studentPasswordInput').value.trim();
+
+  if (!name || !password) return alert("कृपया नाम और पासवर्ड दर्ज करें");
+
+  const student = registeredStudents.find(s => s.name === name && s.password === password);
+
+  if (!student) return alert("अमान्य नाम या पासवर्ड!");
+
+  currentStudent = name;
+  document.getElementById("loginSection").style.display = "none";
+  document.getElementById("registerSection").style.display = "none";
+  document.getElementById("quizSection").style.display = "block";
+  document.getElementById("scoreSection").style.display = "block";
+  document.getElementById("messageSection").style.display = "block";
+
+  loadQuiz();
+  renderScore();
+  renderMessages();
+}
+
+function loadQuiz() {
+  fetch('questions.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('नेटवर्क प्रतिक्रिया ठीक नहीं है');
+      }
+      return response.json();
+    })
+    .then(data => {
+      const quiz = data;
+      saveData("quizQuestions", quiz);
+      const form = document.getElementById("quizForm");
+      form.innerHTML = "";
+
+      quiz.forEach((q, i) => {
+        const block = document.createElement("div");
+        block.className = "question-block";
+        block.innerHTML = `
+          <p><strong>प्रश्न ${i + 1}: ${q.question}</strong></p>
+          ${q.options.map((option, index) => `
+            <label><input type="radio" name="q${i}" value="${option}"> ${option}</label><br>
+          `).join('')}
+        `;
+        form.appendChild(block);
+      });
+    })
+    .catch(error => {
+      console.error('प्रश्न लोड करने में त्रुटि:', error);
+    });
+}
+
+function submitQuiz() {
+  const quiz = loadData("quizQuestions", []);
+  let score = 0;
+  quiz.forEach((q, i) => {
+    const val = document.querySelector(`input[name=q${i}]:checked`);
+    if (val && val.value === q.answer) score++;
+  });
+  const result = { studentName: currentStudent, score, date: new Date().toISOString() };
+  const results = loadData("studentResults", []);
+  results.push(result);
+  saveData("studentResults", results);
+  alert(`क्विज़ सबमिट किया गया! आपका स्कोर है ${score}/${quiz.length}`);
+  renderScore();
+}
+
+function renderScore() {
+  const results = loadData("studentResults", []);
+  const r = results.filter(r => r.studentName === currentStudent).pop();
+  if (!r) return;
+  document.getElementById("scoreDisplay").innerHTML = `
+    <p><strong>नाम:</strong> ${r.studentName}</p>
+    <p><strong>स्कोर:</strong> ${r.score}/${loadData("quizQuestions", []).length}</p>
+    <p><strong>तारीख:</strong> ${new Date(r.date).toLocaleString()}</p>
+  `;
+}
+
+function renderMessages() {
+  const messages = loadData("messages", []);
+  const filtered = messages.filter(m => m.receiver === currentStudent || m.receiver === "All");
+  document.getElementById("messagesBox").innerHTML = filtered.map(m =>
+    `<p><strong>${m.sender}:</strong> ${m.content} <small>(${m.timestamp})</small></p>`
+  ).join('');
+}
+
+function sendMessage() {
+  const msg = document.getElementById("studentMessage").value.trim();
+  if (!msg) return alert("संदेश दर्ज करें!");
+  const messages = loadData("messages", []);
+  messages.push({ sender: currentStudent, receiver: "Admin", content: msg, timestamp: new Date().toLocaleString() });
+  saveData("messages", messages);
+  document.getElementById("studentMessage").value = "";
+  renderMessages();
+}
+</script>
+</body>
+</html>
